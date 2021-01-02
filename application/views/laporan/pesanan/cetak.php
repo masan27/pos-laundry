@@ -8,12 +8,14 @@
     <table class="table table-borderless">
         <tr class="text-center">
             <td colspan="4">
-                <p class="h3">Laporan Pesanan</p>
-                <p>(<small><?=$awal?> - <?=$akhir?></small>)</p>
+                <p class="h3">Laporan Pesanan <?=$jenis?></p>
+                <p>(<small><?= $awal ?> - <?= $akhir ?></small>)</p>
                 <p class="h5">Tiara Laundry</p>
-                <p class="h6">
-                    Jl. Tiara Laundy, Jakarta Timur
-                </p>
+                <small>
+                    Jl. Pondok Baru Timur 
+                    RT. 12, RW. 11, No. 36, <br>
+                    Jakarta Timur, 13770
+                </small>
             </td>
         </tr>
     </table>
@@ -43,8 +45,8 @@
                         <?= number_format($dlist->jumlah_pesanan, 2) ?>
                     </span>
                 </td>
-                <td><?= ($dlist->proses_pesanan)? 'Y' : ''; ?></td>
-                <td><?= ($dlist->void_pesanan)? 'Y' : ''; ?></td>
+                <td><?= ($dlist->proses_pesanan) ? 'Y' : ''; ?></td>
+                <td><?= ($dlist->void_pesanan) ? 'Y' : ''; ?></td>
             </tr>
         <?php } ?>
     </table>

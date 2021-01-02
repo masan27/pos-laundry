@@ -10,9 +10,11 @@
             <td colspan="2">
                 <p class="h3">Pesanan Laundry</p>
                 <p class="h5">Tiara Laundry</p>
-                <p class="h6">
-                    Jl. Tiara Laundy, Jakarta Timur
-                </p>
+                <small>
+                    Jl. Pondok Baru Timur 
+                    RT. 12, RW. 11, No. 36, <br>
+                    Jakarta Timur, 13770
+                </small>
             </td>
         </tr>
         <tr>

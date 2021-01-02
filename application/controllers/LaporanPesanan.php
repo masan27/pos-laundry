@@ -7,16 +7,27 @@ class LaporanPesanan extends CI_Controller
     {
         $awal = date('Y-m-d');
         $akhir = date('Y-m-d');
-        if (isset($_REQUEST['awal']) && isset($_REQUEST['akhir'])) {
+        $jenis = '';
+        if (isset($_REQUEST['awal']) && isset($_REQUEST['akhir']) && isset($_REQUEST['jenis'])) {
             $awal = $_REQUEST['awal'];
-            $akhir = $_REQUEST['akhir'];            
+            $akhir = $_REQUEST['akhir'];
+            $jenis = $_REQUEST['jenis'];
         }
-        
+
         $page = "laporan/pesanan/";
-        $query = $this->db
-            ->where('tanggal_pesanan <=', $akhir)
-            ->where('tanggal_pesanan >=', $awal)
-            ->get('pesanan')
+        $this->db->where('tanggal_pesanan <=', $akhir)
+            ->where('tanggal_pesanan >=', $awal);
+        if ($jenis) {
+            if ($jenis == 'V') {
+                $this->db->where('void_pesanan', 'Y');
+            } else if ($jenis == 'L') {
+                $this->db->where('proses_pesanan', 'Y');
+            } else if ($jenis == 'B') {
+                $this->db->where('void_pesanan', null)
+                    ->where('proses_pesanan', null);
+            }
+        }
+        $query = $this->db->get('pesanan')
             ->result();
         $data = array(
             'title' => 'Laporan Pesanan',
@@ -25,6 +36,7 @@ class LaporanPesanan extends CI_Controller
             'data' => $query,
             'awal' => $awal,
             'akhir' => $akhir,
+            'jenis' => $jenis,
         );
         $this->load->view('layout/app', $data);
     }
@@ -48,17 +60,27 @@ class LaporanPesanan extends CI_Controller
     {
         $awal = date('Y-m-d');
         $akhir = date('Y-m-d');
-        if (isset($_REQUEST['awal']) && isset($_REQUEST['akhir'])) {
+        $jenis = '';
+        if (isset($_REQUEST['awal']) && isset($_REQUEST['akhir']) && isset($_REQUEST['jenis'])) {
             $awal = $_REQUEST['awal'];
             $akhir = $_REQUEST['akhir'];
+            $jenis = $_REQUEST['jenis'];
         }
-
         $this->load->library('Pdf');
 
-        $pesanan = $this->db
-            ->where('tanggal_pesanan <=', $akhir)
-            ->where('tanggal_pesanan >=', $awal)
-            ->get('pesanan')
+        $this->db->where('tanggal_pesanan <=', $akhir)
+            ->where('tanggal_pesanan >=', $awal);
+        if ($jenis) {
+            if ($jenis == 'V') {
+                $this->db->where('void_pesanan', 'Y');
+            } else if ($jenis == 'L') {
+                $this->db->where('proses_pesanan', 'Y');
+            } else if ($jenis == 'B') {
+                $this->db->where('void_pesanan', null)
+                    ->where('proses_pesanan', null);
+            }
+        }
+        $pesanan = $this->db->get('pesanan')
             ->result();
 
         $file = 'Laporan pesanan per ' . $awal . '-' . $akhir . '.pdf';
@@ -66,12 +88,21 @@ class LaporanPesanan extends CI_Controller
         $awal = date('d-m-Y', strtotime($awal));
         $akhir = date('d-m-Y', strtotime($akhir));
 
+        if ($jenis == 'V') {
+            $jenis = 'Void';
+        } else if ($jenis == 'L') {
+            $jenis = 'Sudah Bayar';
+        } else if ($jenis == 'B') {
+            $jenis = 'Belum Bayar';
+        }
+
         $data = array(
             'title' => 'Cetak Laporan pesanan',
             'file'    => $file,
             'data' => $pesanan,
             'awal' => $awal,
             'akhir' => $akhir,
+            'jenis' => $jenis
         );
 
 

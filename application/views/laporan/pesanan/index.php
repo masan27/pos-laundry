@@ -11,14 +11,31 @@
             <div class="card-header py-3">
                 <div class="d-sm-flex align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">Laporan Pesanan</h6>
+                    <a href="<?= base_url('laporanpesanan/cetak?awal=' . $awal . '&akhir=' . $akhir . '&jenis=' . $jenis) ?>" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary btn-icon-split shadow-sm">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-print"></i>
+                        </span>
+                        <span class="text">Cetak Laporan</span>
+                    </a>
+                </div>
+                <div class="d-sm-flex align-items-center justify-content-between mt-2">
                     <div class="row">
-                        <label class="col-sm-2 col-form-label">Awal</label>
-                        <div class="col-md-4">
+                        <label class="col-md-1 col-form-label">Awal</label>
+                        <div class="col-md-3">
                             <input type="date" id="awal" name="awal" class="form-control" value="<?= $awal ?>">
                         </div>
-                        <label class="col-sm-2 col-form-label">Akhir</label>
-                        <div class="col-md-4">
+                        <label class="col-md-1 col-form-label">Akhir</label>
+                        <div class="col-md-3">
                             <input type="date" id="akhir" name="akhir" class="form-control" value="<?= $akhir ?>">
+                        </div>
+                        <label class="col-md-1 col-form-label">Jenis</label>
+                        <div class="col-md-3">
+                            <select id="jenis" class="form-control">
+                                <option value="">Tampilkan semua</option>
+                                <option <?= ($jenis == 'V') ? 'selected' : '' ?> value="V">Void</option>
+                                <option <?= ($jenis == 'L') ? 'selected' : '' ?> value="L">Sudah Bayar</option>
+                                <option <?= ($jenis == 'B') ? 'selected' : '' ?> value="B">Belum Bayar</option>
+                            </select>
                         </div>
                     </div>
                     <a onclick="cariData()" class="d-none d-sm-inline-block btn btn-sm btn-primary btn-icon-split shadow-sm">
@@ -26,12 +43,6 @@
                             <i class="fas fa-search"></i>
                         </span>
                         <span class="text">Cari</span>
-                    </a>
-                    <a href="<?= base_url('laporanpesanan/cetak?awal=' . $awal . '&akhir=' . $akhir) ?>" target="_blank" class="d-none d-sm-inline-block btn btn-sm btn-primary btn-icon-split shadow-sm">
-                        <span class="icon text-white-50">
-                            <i class="fas fa-print"></i>
-                        </span>
-                        <span class="text">Cetak Laporan</span>
                     </a>
                 </div>
             </div>
