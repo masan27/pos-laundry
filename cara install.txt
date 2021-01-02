@@ -1,0 +1,14 @@
+Cara install
+1. extrack pos/laundry.zip ke folder xampp/htdocs
+--apabila sudah ada database dengan nama pos-laundry skip step 2
+2. buka phpmyadmin, buat database baru dengan nama pos-laundry
+3. pilih database pos-laundry, kemudian pilih impor dan pilih file
+4. cari file pos-laundry.sql yang ada di folder pos-laundry
+5. klik kirim atau go (jika dalam bahas inggis)
+
+Cara buka
+buka browser dan ketik url : localhost/pos-laundry
+
+Daftar user
+1. username: admin, pass: admin, role: admin
+2. username: user1, pass: user1, role: user
