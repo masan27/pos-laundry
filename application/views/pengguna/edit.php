@@ -62,7 +62,7 @@
                         </span>
                         <span class="text">Simpan</span>
                     </button>
-                    <a href="<?php echo base_url('kategoribarang') ?>" class="btn btn-secondary btn-icon-split btn-sm">
+                    <a href="<?php echo base_url('pengguna') ?>" class="btn btn-secondary btn-icon-split btn-sm">
                         <span class="icon text-white-50">
                             <i class="fas fa-window-close"></i>
                         </span>

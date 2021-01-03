@@ -60,8 +60,10 @@ class Pengguna extends CI_Controller
         $valid->set_rules('nama_user', 'Nama Pengguna', 'required');
         $valid->set_rules('role', 'Jabatan', 'required');
 
-        if ($old->username != $i['username']) {
-            $valid->set_rules('username', 'Username', 'is_unique[user.username]');
+        if ($i) {
+            if ($old->username != $i['username']) {
+                $valid->set_rules('username', 'Username', 'is_unique[user.username]');
+            }
         }
 
         $data = array(

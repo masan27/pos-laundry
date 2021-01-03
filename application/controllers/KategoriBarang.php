@@ -37,7 +37,7 @@ class KategoriBarang extends CI_Controller
             
             $this->db->insert('kategori_barang', $input);
             $this->session->set_flashdata('success', 'Kategori Barang berhasil ditambahkan');
-            return redirect(base_url('barang'));
+            return redirect(base_url('kategoribarang'));
         }
         $this->load->view('layout/app', $data);
     }

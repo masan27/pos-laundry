@@ -171,4 +171,9 @@ class Barang extends CI_Controller
         $this->session->set_flashdata('success', 'Barang berhasil dihapus');
         return redirect(base_url('barang'));
     }
+
+    public function test()
+    {
+        redirect($_SERVER['HTTP_REFERER']);
+    }
 }

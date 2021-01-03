@@ -7,7 +7,7 @@ Cara install
 5. klik kirim atau go (jika dalam bahas inggis)
 
 Cara buka
-buka browser dan ketik url : localhost/pos-laundry
+buka browser dan ketik di url: localhost/pos-laundry
 
 Daftar user
 1. username: admin, pass: admin, role: admin
